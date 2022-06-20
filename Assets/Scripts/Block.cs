@@ -9,7 +9,7 @@ public class Block : MonoBehaviour
     [SerializeField] public GameObject destroyedBlockParticlesVFX;
     [SerializeField] public int maxHits;
     [SerializeField] public Sprite[] damageSprites;
-
+    
     // references to other objects
     private LevelController _levelController;
     private Vector3 _soundPosition;
@@ -17,11 +17,14 @@ public class Block : MonoBehaviour
     // state
     private int _currentHits = 0;
     
+    //DropItem
+    private DropItem _dropItem;
     void Start()
     {
         // selects other game object without SCENE binding: programatically via API
         _levelController = FindObjectOfType<LevelController>();
         _soundPosition = FindObjectOfType<Camera>().transform.position;
+        _dropItem = FindObjectOfType<DropItem>();
 
         // increment the block counter if the block's breakable
         if (CompareTag("Breakable")) _levelController.IncrementBlocksCounter();
@@ -44,6 +47,7 @@ public class Block : MonoBehaviour
         }
         else
         {
+            
             DestroyItself();    
         }
     }
@@ -88,6 +92,8 @@ public class Block : MonoBehaviour
      */    
     private void DestroyItself()
     {
+        _dropItem.RandomWithDropRate(this.transform);
+        
         // adds player points
         var gameState = FindObjectOfType<GameSession>();  // singleton
         gameState.AddToPlayerScore(maxHits);

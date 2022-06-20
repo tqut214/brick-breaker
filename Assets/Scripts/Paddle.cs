@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Time = Codice.Client.Common.Time;
 
 public class Paddle : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     public float screenWidthUnits = 16;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +47,7 @@ public class Paddle : MonoBehaviour
         var relativePosition = pixelPosition/screenWidth * screenWidthUnits;
         return relativePosition;
     }
+    
 
+    
 }

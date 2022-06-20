@@ -25,9 +25,14 @@ public class LoseCollider : MonoBehaviour
             // deduces a game life from the player
             gameSession.PlayerLives--;
             FixBallOnPaddleAfterLoss();
-            
+        }
+
+        if (other.gameObject.CompareTag("PickableItem"))
+        {
+            Destroy(other.gameObject);
         }
     }
+    
 
     private void FixBallOnPaddleAfterLoss()
     {

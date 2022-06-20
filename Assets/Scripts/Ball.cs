@@ -36,6 +36,7 @@ public class Ball : MonoBehaviour
     
     private void Update()
     {
+        
         // if ball has been shot, no locking or shooting it again!
         if (HasBallBeenShot) return;
         
@@ -63,6 +64,7 @@ public class Ball : MonoBehaviour
         
         HasBallBeenShot = true;
         _rigidBody2D.velocity = initialBallSpeed;
+        Debug.Log(initialBallSpeed);
     }
 
     /**

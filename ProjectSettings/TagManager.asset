@@ -8,6 +8,7 @@ TagManager:
   - Unbreakable
   - Transparent
   - MenuOptionWithChild
+  - PickableItem
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PickAbleItem
   - 
   - 
   - 
