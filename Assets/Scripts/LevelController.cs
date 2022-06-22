@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     private readonly string GAME_OVER_SCENE_NAME = "Scenes/GameOver";
-    private readonly int NUMBER_OF_GAME_LEVELS = 3;
+    private readonly int NUMBER_OF_GAME_LEVELS = 40;
     
     // UI elements
     [SerializeField] int blocksCounter;
@@ -39,9 +39,28 @@ public class LevelController : MonoBehaviour
             }
 
             // increases game level
+           
+            int stars;
+            if (gameSession.PlayerLives == 0)
+            {
+                stars = 1;
+            }else if (gameSession.PlayerLives > 0)
+            {
+                stars = 2;
+            }
+            else
+            {
+                stars = 3;
+            }
+            if(stars>PlayerPrefs.GetInt("Lv"+gameSession.GameLevel))
+            {
+                PlayerPrefs.SetInt("Lv"+gameSession.GameLevel,stars);
+            }
+            
             gameSession.GameLevel++;
             _sceneLoader.LoadNextScene();
         }
     }
+    
     
 }

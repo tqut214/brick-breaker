@@ -12,6 +12,7 @@ public class MenuSelector : VerticalMenuSelector
     private readonly string MENU_OPTION_START = "MenuOptionStart";
     private readonly string MENU_OPTION_INSTRUCTIONS = "MenuOptionInstructions";
     private readonly string MENU_OPTION_OPTIONS = "MenuOptionOptions";
+    private readonly string MENU_OPTION_LEVELMAP = "MenuOptionLevelMap";
 
     /**
      * Before first frame update. 
@@ -40,15 +41,15 @@ public class MenuSelector : VerticalMenuSelector
     {
         var currentMenu = this.GetCurrentMenu();
 
-        if (currentMenu.name == MENU_OPTION_START) 
-            this.sceneLoader.LoadSceneByName("Level1");
+        if (currentMenu.name == MENU_OPTION_LEVELMAP) 
+            this.sceneLoader.LoadSceneByName("LevelMap");
         
         else if (currentMenu.name == MENU_OPTION_INSTRUCTIONS) 
             this.sceneLoader.LoadSceneByName("InstructionsMenu");
         
         else if (currentMenu.name == MENU_OPTION_OPTIONS) 
             this.sceneLoader.LoadSceneByName("OptionsMenu");
-
+       
         else 
             this.sceneLoader.Quit();
     }

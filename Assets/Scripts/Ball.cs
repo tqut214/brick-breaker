@@ -30,7 +30,6 @@ public class Ball : MonoBehaviour
 
         var ballPosition = transform.position;
         var paddlePosition = _paddle.transform.position;
-
         _initialDistanceToTopOfPaddle = ballPosition - paddlePosition;  // assumes ball always starts on TOP of the paddle
     }
     
@@ -58,13 +57,12 @@ public class Ball : MonoBehaviour
     /**
      * Shoots the ball for the first time upon the first mouse click.
      */
-    public void ShootBallOnClick(Vector2 initialBallSpeed, bool hasMouseClick)
+    private void ShootBallOnClick(Vector2 initialBallSpeed, bool hasMouseClick)
     {
         if (!hasMouseClick) return;
         
         HasBallBeenShot = true;
         _rigidBody2D.velocity = initialBallSpeed;
-        Debug.Log(initialBallSpeed);
     }
 
     /**
