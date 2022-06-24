@@ -1,4 +1,4 @@
 ﻿{
 	"name": "ScriptsAssembly",
-	"references": [ "Unity.TextMeshPro" ]
+	"references": [ "Unity.TextMeshPro", "Unity.ObjectPooling" ]
 }

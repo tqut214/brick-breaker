@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
 
     // properties
     public Vector2 InitialBallSpeed { get; set; }
+    public float speed = 5f;
     public Paddle Paddle { get; set; }
     public bool HasBallBeenShot { get; set; } = false;
 
@@ -49,9 +50,16 @@ public class Ball : MonoBehaviour
     /**
      * Fixes the ball on top of the paddle before the first mouse click.
      */
-    public void FixBallOnTopOfPaddle(Vector2 paddlePosition, Vector2 distanceToPaddle)
+    void FixBallOnTopOfPaddle(Vector2 paddlePosition, Vector2 distanceToPaddle)
     {
         transform.position = paddlePosition + distanceToPaddle;
+    }
+
+    public void ResetBallToPaddle()
+    {
+        HasBallBeenShot = false;
+        var paddlePosition = _paddle.transform.position;
+        FixBallOnTopOfPaddle(paddlePosition, _initialDistanceToTopOfPaddle);
     }
     
     /**
@@ -93,12 +101,11 @@ public class Ball : MonoBehaviour
         var correctVelocityX = _rigidBody2D.velocity.x;
         
         var bumpAudio = bumpAudioClips[randomBumpAudioIndex];
-            
         _audioSource.PlayOneShot(bumpAudio);
         // _rigidBody2D.velocity += GetRandomVelocityBounce();
 
-        if (Math.Abs(_rigidBody2D.velocity.y) < 4f) correctVelocityY = 4f * signVelocityY;
-        if (Math.Abs(_rigidBody2D.velocity.x) < 4f) correctVelocityX = 4f * signVelocityX;
+        if (Math.Abs(_rigidBody2D.velocity.y) < 4f) correctVelocityY = 4f * signVelocityY+speed;
+        if (Math.Abs(_rigidBody2D.velocity.x) < 4f) correctVelocityX = 4f * signVelocityX+speed;
         
         _rigidBody2D.velocity = new Vector2(correctVelocityX, correctVelocityY);
     }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameSession : MonoBehaviour
@@ -43,7 +44,10 @@ public class GameSession : MonoBehaviour
         playerScoreText.text = this.PlayerScore.ToString();
         gameLevelText.text = this.GameLevel.ToString();
         playerLivesText.text = this.PlayerLives.ToString();
+
     }
+
+   
 
     /**
      * Update per-frame.

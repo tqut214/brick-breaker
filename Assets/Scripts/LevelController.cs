@@ -13,9 +13,18 @@ public class LevelController : MonoBehaviour
 
     // state
     private SceneLoader _sceneLoader;
-    
+
+    private LoadLevelData _loadLevelData;
+    private LevelData _levelData;
+
+    private Paddle _paddle;
+    private Ball _ball;
     private void Start()
     {
+        _loadLevelData = FindObjectOfType<LoadLevelData>();
+        _levelData = FindObjectOfType<LevelData>();
+        _paddle = FindObjectOfType<Paddle>();
+        _ball = FindObjectOfType<Ball>();
         _sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
@@ -39,28 +48,28 @@ public class LevelController : MonoBehaviour
             }
 
             // increases game level
-           
-            int stars;
-            if (gameSession.PlayerLives == 0)
+
+            int stars = gameSession.PlayerLives switch
             {
-                stars = 1;
-            }else if (gameSession.PlayerLives > 0)
-            {
-                stars = 2;
-            }
-            else
-            {
-                stars = 3;
-            }
+                > 2 => 3,
+                > 0 => 2,
+                _ => 1
+            };
             if(stars>PlayerPrefs.GetInt("Lv"+gameSession.GameLevel))
             {
                 PlayerPrefs.SetInt("Lv"+gameSession.GameLevel,stars);
             }
-            
-            gameSession.GameLevel++;
-            _sceneLoader.LoadNextScene();
+            _levelData.level += 1;
+            ReloadLevel();
         }
     }
-    
-    
+
+
+    void ReloadLevel()
+    { 
+        _paddle.ResetPaddlePosition();
+        _ball.ResetBallToPaddle();
+        _loadLevelData.ReturnAllGameObjectToPool();
+        _loadLevelData.LoadDataFromCsv();
+    }
 }

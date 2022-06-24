@@ -21,10 +21,9 @@ namespace Tests
             
             return ball;
         }
-        
         // A Test behaves as an ordinary method
         [Test]
-        public void TestFixBallOnPaddle_ShouldUpdateBallPositionToTop()
+        /*public void TestFixBallOnPaddle_ShouldUpdateBallPositionToTop()
         {
             var paddle = new TestPaddle().TestPaddleFactory(new Vector2(2f, 2f));
             var ball = TestBallFactory(paddle, new Vector2(2f, 3f), false);
@@ -38,9 +37,9 @@ namespace Tests
             
             // ball should be ON TOp at 4f, 3f!
             Assert.AreEqual(new Vector3(4f, 3f, 0f), ball.transform.position);
-        }
+        }*/
 
-        [Test]
+        //[Test]
         public void TextShootBallOnClick_ShouldSetBallSpeed()
         {
             // var paddle = new TestPaddle().TestPaddleFactory(new Vector2(2f, 2f));
