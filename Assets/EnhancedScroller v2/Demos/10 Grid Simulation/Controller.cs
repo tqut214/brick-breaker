@@ -19,6 +19,8 @@ namespace EnhancedScrollerDemos.GridSimulation
         /// </summary>
         private SmallList<Data> _data;
 
+        public int NumberOfButton;
+
         /// <summary>
         /// This is our scroller we will be a delegate for
         /// </summary>
@@ -57,9 +59,9 @@ namespace EnhancedScrollerDemos.GridSimulation
         {
             // set up some simple data
             _data = new SmallList<Data>();
-            for (var i = 0; i < 1000; i ++)
+            for (var i = 0; i < NumberOfButton; i ++)
             {
-                _data.Add(new Data() { someText = i.ToString() });
+                _data.Add(new Data() { LevelID = i+1});
             }
 
             // tell the scroller to reload now that we have the data

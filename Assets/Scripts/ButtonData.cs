@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class ButtonData : MonoBehaviour
 {
+    private LevelData _levelData;
     public TextMeshProUGUI text;
     public GameObject block;
     public GameObject Stars;
@@ -18,6 +19,7 @@ public class ButtonData : MonoBehaviour
     public int stars;
     void Start()
     {
+        _levelData = FindObjectOfType<LevelData>();
         stars = PlayerPrefs.GetInt("Lv" + buttonID);
         text.text = buttonID.ToString();
         Stars.transform.GetChild(0).gameObject.SetActive(false);
@@ -80,7 +82,8 @@ public class ButtonData : MonoBehaviour
     {
         if (!isBlock)
         {
-            SceneManager.LoadScene("Level"+buttonID);
+            _levelData.level = buttonID;
+            SceneManager.LoadScene("GamePlayScene",LoadSceneMode.Single);
         }
     }
 

@@ -22,9 +22,14 @@ public class Paddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ResetPaddlePosition();
+    }
+
+    public void ResetPaddlePosition()
+    {
         float startPosX = ConvertPixelToRelativePosition(screenWidthUnits / 2, Screen.width);
         transform.position = GetUpdatedPaddlePosition(startPosX);
-    } 
+    }
 
     // Update is called once per frame
     void Update()

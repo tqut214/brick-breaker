@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "com.grashaar.unity-objectpooling": "file:C:/Users/ginku/Downloads/Unity.ObjectPooling-1.5.2-preview.1/Unity.ObjectPooling-1.5.2-preview.1",
+    "com.laicasaane.unity-addressables-manager": "file:C:/Users/ginku/Downloads/unity-addressables-manager-1.2.3/unity-addressables-manager-1.2.3",
+    "com.laicasaane.unity-supplements": "2.6.0",
     "com.unity.2d.animation": "7.0.5",
     "com.unity.2d.pixel-perfect": "5.0.1",
     "com.unity.2d.psdimporter": "6.0.3",
@@ -46,5 +49,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.laicasaane.unity-supplements"
+      ]
+    }
+  ]
 }

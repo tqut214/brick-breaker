@@ -9,19 +9,18 @@ namespace DefaultNamespace
     public class PlayerStat : MonoBehaviour
     {
         public Transform paddle;
+        public Ball ball;
         public bool isGearBuff;
         public bool isBottleBuff;
-        public Ball ball;
         public float gearBuffTimer;
         public float bottleBuffTimer;
-        private int countBottleBuff;
-        private Vector2 originBallSpeed;
+        private int _countBottleBuff;
+        private float _originBallSpeed;
         private void Start()
         {
             paddle = FindObjectOfType<Paddle>().gameObject.transform;
             ball = FindObjectOfType<Ball>();
-            originBallSpeed = ball.InitialBallSpeed;
-            
+            _originBallSpeed = ball.speed;
         }
 
         private void Update()
@@ -39,18 +38,16 @@ namespace DefaultNamespace
             if (isBottleBuff)
             {
                 bottleBuffTimer -= Time.deltaTime;
-                if (countBottleBuff > 0&&bottleBuffTimer<=0)
+                if (_countBottleBuff > 0&&bottleBuffTimer<=0)
                 {
                     bottleBuffTimer = 5;
                 }
-
-                if (countBottleBuff < 0 && bottleBuffTimer <= 0)
+                if (_countBottleBuff < 0 && bottleBuffTimer <= 0)
                 {
-                    ball.InitialBallSpeed = originBallSpeed;
+                    ball.speed = _originBallSpeed;
                 }
             }
         }
-
         public void GearBuff()
         {
             if (!isGearBuff)
@@ -59,7 +56,6 @@ namespace DefaultNamespace
                 gearBuffTimer = 10;
                 isGearBuff = true;
             }
-
             if (isGearBuff&&gearBuffTimer >0)
             {
                 gearBuffTimer = 10;
@@ -67,27 +63,30 @@ namespace DefaultNamespace
         }
         public void BlueBottleBuff()
         {
+            if (ball.speed < 0.1)
+            {
+                return;
+            }
             
             if (!isBottleBuff)
             {
-                float tempSpeed = 1 - 0.1f;
-                ball.InitialBallSpeed = new Vector2(2,10)*tempSpeed;
+                float downSpeed = 1 - 0.1f;
+                ball.speed -= downSpeed;
                 bottleBuffTimer = 5;
-                countBottleBuff = 1;
+                _countBottleBuff = 1;
                 isBottleBuff = true;
             }
-
             if (isBottleBuff & bottleBuffTimer > 0)
             {
-                countBottleBuff++;
-                float tempSpeed = 1 - countBottleBuff*0.1f;
-                ball.InitialBallSpeed = new Vector2(2,10)*tempSpeed;
+                _countBottleBuff++;
+                float downSpeed = 1 - _countBottleBuff*0.1f;
+                ball.speed -= downSpeed;
             }
         }
         public void EmptyBottle()
         {
             bottleBuffTimer = 0;
-            countBottleBuff = 0;
+            _countBottleBuff = 0;
             isBottleBuff = false;
             gearBuffTimer = 0;
             isGearBuff = false;

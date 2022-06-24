@@ -1319,6 +1319,10 @@ namespace EnhancedUI.EnhancedScroller
             cellView.cellIndex = cellIndex;
             cellView.dataIndex = dataIndex;
             cellView.active = true;
+            /*for (int i = 0; i < 4; i++)
+            {
+                cellView.transform.GetChild(i).GetComponent<ButtonData>().buttonID = cellIndex*4 + i+1;
+            }*/
 
             // add the cell view to the active container
             cellView.transform.SetParent(_container, false);
