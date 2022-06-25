@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4967155437459384594}
   - component: {fileID: 4967155437459384605}
-  - component: {fileID: 3095431833824761966}
+  - component: {fileID: 1579456760}
   m_Layer: 5
   m_Name: ButtonView
   m_TagString: Untagged
@@ -210,9 +210,9 @@ MonoBehaviour:
   block: {fileID: 4967155438724425898}
   Stars: {fileID: 4967155438510613965}
   buttonID: 1
-  isBlock: 0
+  isBlock: 1
   stars: 0
---- !u!114 &3095431833824761966
+--- !u!114 &1579456760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,10 +221,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4967155437459384595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff93fe52be70654ab71fe3f46ae6553, type: 3}
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 3048626057933153644}
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &4967155438510613965
 GameObject:
   m_ObjectHideFlags: 0

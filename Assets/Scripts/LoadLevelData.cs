@@ -24,12 +24,12 @@ public class LoadLevelData : MonoBehaviour
     }
     public void LoadDataFromCsv()
     {
-        TextAsset levelData = Resources.Load<TextAsset>("Level_"+_levelData.level);
+        TextAsset levelData = Resources.Load<TextAsset>("LevelData\\Level_"+_levelData.level);
         string[] data = levelData.text.Split(new[] { '\n' });
         string[] stat = data[0].Split(new[] { ',' });
         int.TryParse(stat[0], out var lives);
         _gameSession.PlayerLives = lives;
-        StartCoroutine(LateStart(0.1f,_levelData.level));
+        StartCoroutine(LateStart(0.2f,_levelData.level));
         float.TryParse(stat[1], out var ballSpeed);
         _ball.speed = ballSpeed;
         GenerateBlocks(data);

@@ -19,12 +19,14 @@ public class ButtonData : MonoBehaviour
     public int stars;
     void Start()
     {
+       
         _levelData = FindObjectOfType<LevelData>();
         stars = PlayerPrefs.GetInt("Lv" + buttonID);
-        text.text = buttonID.ToString();
+        
         Stars.transform.GetChild(0).gameObject.SetActive(false);
         Stars.transform.GetChild(1).gameObject.SetActive(false);
         Stars.transform.GetChild(2).gameObject.SetActive(false);
+        
     }
 
     private void Update()
@@ -35,6 +37,7 @@ public class ButtonData : MonoBehaviour
 
     void SetupButton()
     {
+        text.text = buttonID.ToString();
         if (stars > 0)
         {
             Stars.SetActive(true);
@@ -77,7 +80,6 @@ public class ButtonData : MonoBehaviour
                 
         }
     }
-
     public void PressSelection()
     {
         if (!isBlock)
